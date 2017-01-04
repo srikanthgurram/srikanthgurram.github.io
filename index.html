@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myBlog">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -36,19 +36,24 @@
   <p>My Personal Blog </p>
     
   </div>
+  <div class="row">
+    <p>
+       add this value {{ 3 + 4 }}
+    </p>
+  </div>
 <div class="row">
         <!-- Left Layout -->
-        <div class="col-md-8">
+        <div class="col-md-8" ng-controller="homeController as hc">
         <div>
-              <h2>My First blog post</h2>
-              <p>Jan 01, 2017 by <a href="#">Jacob</a></p>
+              <h2>{{ hc.blogContent.title }}</h2>
+              <p>{{  hc.blogContent.createDate }} <a href="#">{{ hc.blogContent.author }}</a></p>
 
-              <p>Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
-              <blockquote>
-                <p>Curabitur blandit tempus porttitor. <strong>Nullam quis risus eget urna mollis</strong> ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              </blockquote>
-              <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-              <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+              <p>
+                {{ hc.blogContent.content }}
+              </p>
+
+
+              
             </div><!-- /.blog-post -->
             <hr>
             <div>
@@ -67,7 +72,12 @@
        
 <div>
             <h4>About</h4>
+            <a href="./index.html">
+              <button>click me</button>
+            </a>
             <img src="./assets/img/Penguins.jpg" alt="it's me" class="img-circle myimage">
+
+             
             <p>This is my personal blog, it is created as part of our workshop</p>
             <div>
           <h4>Archives</h4>
@@ -85,6 +95,8 @@
 </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/angular.min.js"></script>
+    <script src="assets/js/angular/app.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="assets/js/bootstrap.min.js"></script>
     </body>
