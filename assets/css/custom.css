@@ -7,3 +7,18 @@
 	width: 150px; 
 	height: 140px;
 }
+
+.ng-invalid.ng-dirty {
+	border-color: #FA787E;
+}
+
+.ng-valid.ng-dirty {
+	border-color: #78FA89;
+}
+.ng-invalid.ng-untouched {
+	border-color: #FA787E;
+}
+
+.ng-invalid.ng-pristine {
+	border-color: #FA787E;
+}

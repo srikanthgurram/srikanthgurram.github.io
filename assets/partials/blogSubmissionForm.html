@@ -1,0 +1,33 @@
+              <form name="newBlogForm" ng-show="hc.composeBlog" class="form-horizontal" 
+                    ng-submit="newBlogForm.$valid && hc.updateBlog()" novalidate>
+                <div class="form-group">
+                  <div class="col-md-2">
+                    <label for="title"  class=" control-label">Title</label>
+                  </div>
+                  <div class="col-md-8">
+                    <input ng-model="hc.blogTitle" type="text" class="form-control" id="title" required>  
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-2">
+                    <label for="author" class="control-label">Author</label>
+                  </div>
+                  <div class="col-md-8">
+                    <input ng-model="hc.authorName" type="text" class="form-control" id="author" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-2">
+                    <label for="blog" class="control-label">BlogText</label>
+                  </div>
+                  <div class="col-md-8">
+                    <textarea ng-model="hc.enteredText" class="form-control" id="blog" rows="5" required></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-2"> </div>
+                  <div class="col-md-8"> 
+                    <button type="Submit" class="btn btn-primary btn-lg btn-block">Create Blog</button>
+                  </div>
+                </div>
+              </form>

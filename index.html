@@ -19,17 +19,18 @@
         <![endif]-->
       </head>
       <body>
-
-        <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div ng-controller="navController as nv">
+        <!-- Navigatiob var -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" >
           <div class="container">
-           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li class="active"><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-
-      </nav> 
+           <ul class="nav navbar-nav" ng-repeat="menu in nv.itemsAvailable">
+              <li ng-class="{ active: menu.active }">
+                <a href="{{ menu.link }}">{{ menu.text }}</a>
+              </li>
+            </ul>
+          </div>
+        </nav> 
+        <!-- Tab content -->
       <div class= "container">
         <div class="row">
           <h1 class= "user"> My Blog</h1>
@@ -39,39 +40,8 @@
           <!-- Left Layout -->
           <div class="col-md-8" ng-controller="homeController as hc" >
             <button ng-click="hc.createNewForm()" class="btn btn-success">Add New</button>
-            <div class="row">
-              <form ng-show="hc.composeBlog" ng-submit="hc.updateBlog()" class="form-horizontal">
-                <div class="form-group">
-                  <div class="col-md-2">
-                    <label for="title"  class=" control-label">Title</label>
-                  </div>
-                  <div class="col-md-8">
-                    <input ng-model="hc.blogTitle" type="text" class="form-control" id="title">  
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-md-2">
-                    <label for="author" class="control-label">Author</label>
-                  </div>
-                  <div class="col-md-8">
-                    <input ng-model="hc.authorName" type="text" class="form-control" id="author">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-md-2">
-                    <label for="blog" class="control-label">BlogText</label>
-                  </div>
-                  <div class="col-md-8">
-                    <textarea ng-model="hc.enteredText" class="form-control" id="blog" rows="5"></textarea>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-md-2"> </div>
-                  <div class="col-md-8"> 
-                    <button type="Submit" class="btn btn-primary btn-lg btn-block">Create Blog</button>
-                  </div>
-                </div>
-              </form>
+            <div class="row" ng-include="'./assets/partials/blogSubmissionForm.html'">
+
             </div>
             <!-- My first blog -->
             <div ng-repeat="blog in hc.blogContent | orderBy: '-blog.createdDate' " >
@@ -102,6 +72,7 @@
             </div>
           </div>
         </div>
+      </div>
       </div>
     </div>
 

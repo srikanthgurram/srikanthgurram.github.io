@@ -1,4 +1,5 @@
 var mainModule = angular.module('myBlog', []);
+// Controller for blog content
 mainModule.controller('homeController', function() {
 	// initalize your variables with defaults
     this.blogTitle= "";
@@ -28,3 +29,26 @@ mainModule.controller('homeController', function() {
 	}
 });
 
+// Navigation bar controller
+mainModule.controller('navController', function(){
+	this.itemsAvailable = [
+	{	
+		id: 'home',
+		text: "Home",
+		link: "#/home",
+		active: true
+	},
+	{	
+		id: 'about',
+		text: "About Me",
+		link: "#/about",
+		active: false
+	},
+	{
+		id: 'contact',
+		text: "Contact",
+		link: "#/contact",
+		active: false
+	}
+	]
+});
