@@ -1,134 +1,116 @@
-<!DOCTYPE html>
-<html lang="en" ng-app="myBlog">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <title>My Blog</title>
+  <!DOCTYPE html>
+  <html lang="en" ng-app="myBlog">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>My Blog</title>
 
-  <!-- Bootstrap -->
-  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="assets/css/custom.css">
+    <!-- Bootstrap -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/css/custom.css">
 
-  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-      <![endif]-->
-    </head>
-    <body>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+      <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+      </head>
+      <body>
 
-      <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-         <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li class="active"><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container">
+           <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li class="active"><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
 
-    </nav> 
-    <div class= "container">
-      <div>
-        <h1 class= "user"> My Blog</h1>
-        <p>My Personal Blog </p>
-      </div>
-
-      <div ng-controller="homeController as hc">
-      <button ng-click="hc.createNewForm()" class="btn btn-success">Add New</button>
-      <br>
-        <form ng-show="hc.composeBlog" ng-submit="hc.updateBlog()" class="form-horizontal">
-          <div class="form-group">
-            <div class="col-md-2">
-              <label for="title"  class=" control-label">Title of the blog :</label>
+      </nav> 
+      <div class= "container">
+        <div class="row">
+          <h1 class= "user"> My Blog</h1>
+          <p>My Personal Blog </p>
+        </div>
+        <div class="row">
+          <!-- Left Layout -->
+          <div class="col-md-8" ng-controller="homeController as hc" >
+            <button ng-click="hc.createNewForm()" class="btn btn-success">Add New</button>
+            <div class="row">
+              <form ng-show="hc.composeBlog" ng-submit="hc.updateBlog()" class="form-horizontal">
+                <div class="form-group">
+                  <div class="col-md-2">
+                    <label for="title"  class=" control-label">Title</label>
+                  </div>
+                  <div class="col-md-8">
+                    <input ng-model="hc.blogTitle" type="text" class="form-control" id="title">  
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-2">
+                    <label for="author" class="control-label">Author</label>
+                  </div>
+                  <div class="col-md-8">
+                    <input ng-model="hc.authorName" type="text" class="form-control" id="author">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-2">
+                    <label for="blog" class="control-label">BlogText</label>
+                  </div>
+                  <div class="col-md-8">
+                    <textarea ng-model="hc.enteredText" class="form-control" id="blog" rows="5"></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-2"> </div>
+                  <div class="col-md-8"> 
+                    <button type="Submit" class="btn btn-primary btn-lg btn-block">Create Blog</button>
+                  </div>
+                </div>
+              </form>
             </div>
-
-            <div class="col-md-10">
-              <input ng-model="hc.blogTitle" type="text" class="form-control" id="title">  
-            </div>
-            
-          </div>
-          <div class="form-group">
-           <div class="col-md-2">
-            <label for="author" class="control-label">Author :</label>
-          </div>
-
-          <div class="col-md-10">
-            <input ng-model="hc.authorName" type="text" class="form-control" id="author">
-          </div>
-
-        </div>
-        <div class="form-group">
-          <div class="col-md-2">
-            <label for="blog" class="control-label">BlogText :</label>
-          </div>
-          <div class="col-md-10">
-            <textarea ng-model="hc.enteredText" class="form-control" id="blog" rows="10"></textarea>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="col-md-2"> </div>
-          <div class="col-md-10"> 
-            <button type="Submit" class="btn btn-primary btn-lg form-control">Create Blog</button>
-          </div>
-        </div>
-
-      </form>
-      Title = {{hc.blogTitle}}
-      <br>
-      Author Name = {{hc.authorName}}
-      <br>
-      Content = {{hc.enteredText}}
-      <div class="row">
-        <!-- Left Layout -->
-        <div class="col-md-8" >
-          <!-- My first blog -->
-          <div ng-repeat="blog in hc.blogContent" >
-            <div ng-show="blog.published">
-              <h2>{{ blog.title | uppercase }}</h2>
-              <p>{{  blog.createdDate }} <a href="#">{{ blog.author | lowercase}}</a></p>
-              <p>{{ blog.content }}
-              </p>
-              <hr>
-            </div>
-          </div><!-- /.blog-post -->       
-          <pre>{{ hc.blogContent  }}</pre>
-        </div>
-        <!-- Right Side bar -->
-        <div class="col-md-4">
-
-          <div>
-            <h4>About</h4>
-            <a href="./index.html">
-              <button>click me</button>
-            </a>
-            <img src="./assets/img/Penguins.jpg" alt="it's me" class="img-circle myimage">
-
-
-            <p>This is my personal blog, it is created as part of our workshop</p>
+            <!-- My first blog -->
+            <div ng-repeat="blog in hc.blogContent | orderBy: '-blog.createdDate' " >
+              <div ng-show="blog.published">
+                <h2>{{ blog.title | uppercase }}</h2>
+                <p>Created on {{  blog.createdDate | date:'dd/MM/yyyy @ h:mma' }} by <a href="#">{{ blog.author | lowercase}}</a></p>
+                <p>{{ blog.content }}
+                </p>
+                <hr>
+              </div>
+            </div><!-- blog-post -->       
+          </div><!-- main content -->  
+          <!-- Right Side bar -->
+          <div class="col-md-4">
             <div>
-              <h4>Archives</h4>
-              <ol class="list-unstyled">
-                <li><a href="#">July 2017</a></li>    
-                <li><a href="#">June 2016</a></li>
-                <li><a href="#">May 2016</a></li>
-                <li><a href="#">April 2016</a></li>
-              </ol>
+              <h4>About</h4>
+              <img src="./assets/img/Penguins.jpg" alt="it's me" class="img-circle myimage">
+              <p>This is my personal blog, it is created as part of our workshop</p>
+              <div>
+                <h4>Archives</h4>
+                <ol class="list-unstyled">
+                  <li><a href="#">July 2017</a></li>    
+                  <li><a href="#">June 2016</a></li>
+                  <li><a href="#">May 2016</a></li>
+                  <li><a href="#">April 2016</a></li>
+                </ol>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/angular.min.js"></script>
-  <script src="assets/js/angular/app.js"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="assets/js/bootstrap.min.js"></script>
-</body>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/angular.min.js"></script>
+    <script src="assets/js/angular/app.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="assets/js/bootstrap.min.js"></script>
+  </body>
 </body>
 </html>
