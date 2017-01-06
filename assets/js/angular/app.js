@@ -1,6 +1,6 @@
 var mainModule = angular.module('myBlog', []);
 mainModule.controller('homeController', function() {
-	// initalize your variables
+	// initalize your variables with defaults
     this.blogTitle= "";
     this.enteredText="";
     this.authorName="";
@@ -10,13 +10,16 @@ mainModule.controller('homeController', function() {
 	// form method append the data to array
 	this.updateBlog = function() {
 			var temp={};
+			// data comming from html form
 			temp.title= this.blogTitle;
 			temp.author= this.authorName;
-			temp.createdDate= new Date();
 			temp.content=this.enteredText;
+			// defaults
+			temp.createdDate= new Date();
 			temp.published=true;
-			this.blogContent.push(temp);
 
+			// Append the content to your array
+			this.blogContent.push(temp);
 	}
 
 	// display the form when click on 'Add' button
