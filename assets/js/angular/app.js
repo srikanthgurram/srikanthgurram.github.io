@@ -1,6 +1,11 @@
 var mainModule = angular.module('myBlog', []);
 mainModule.controller('homeController', function() {
-	    this.blogContent = [{
+	    this.blogTitle= "";
+	    this.enteredText="";
+	    this.authorName="";
+	    this.composeBlog=false;
+
+	  /*  this.blogContent = [{
 		title: 'My First blog posted here',
 		author: 'Srikanth',
 		createdDate: 'Jan 01, 2017',
@@ -22,4 +27,21 @@ mainModule.controller('homeController', function() {
 		published: true
 
 	}]
+*/
+    this.blogContent=[];
+	this.updateBlog = function() {
+			var temp={};
+			temp.title= this.blogTitle;
+			temp.author= this.authorName;
+			temp.createdDate='06-01-2017';
+			temp.content=this.enteredText;
+			temp.published=true;
+			this.blogContent.push(temp);
+
+	}
+
+	this.createNewForm = function() {
+		this.composeBlog= true;
+	}
 });
+

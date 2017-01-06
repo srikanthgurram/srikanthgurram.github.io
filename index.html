@@ -36,13 +36,58 @@
         <p>My Personal Blog </p>
       </div>
 
+      <div ng-controller="homeController as hc">
+      <button ng-click="hc.createNewForm()" class="btn btn-success">Add New</button>
+      <br>
+        <form ng-show="hc.composeBlog" ng-submit="hc.updateBlog()" class="form-horizontal">
+          <div class="form-group">
+            <div class="col-md-2">
+              <label for="title"  class=" control-label">Title of the blog :</label>
+            </div>
+
+            <div class="col-md-10">
+              <input ng-model="hc.blogTitle" type="text" class="form-control" id="title">  
+            </div>
+            
+          </div>
+          <div class="form-group">
+           <div class="col-md-2">
+            <label for="author" class="control-label">Author :</label>
+          </div>
+
+          <div class="col-md-10">
+            <input ng-model="hc.authorName" type="text" class="form-control" id="author">
+          </div>
+
+        </div>
+        <div class="form-group">
+          <div class="col-md-2">
+            <label for="blog" class="control-label">BlogText :</label>
+          </div>
+          <div class="col-md-10">
+            <textarea ng-model="hc.enteredText" class="form-control" id="blog" rows="10"></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-2"> </div>
+          <div class="col-md-10"> 
+            <button type="Submit" class="btn btn-primary btn-lg form-control">Create Blog</button>
+          </div>
+        </div>
+
+      </form>
+      Title = {{hc.blogTitle}}
+      <br>
+      Author Name = {{hc.authorName}}
+      <br>
+      Content = {{hc.enteredText}}
       <div class="row">
         <!-- Left Layout -->
-        <div class="col-md-8" ng-controller="homeController as hc">
+        <div class="col-md-8" >
           <!-- My first blog -->
-          <div ng-repeat="blog in hc.blogContent | limitTo:2" >
+          <div ng-repeat="blog in hc.blogContent" >
             <div ng-show="blog.published">
-            <h2>{{ blog.title | uppercase }}</h2>
+              <h2>{{ blog.title | uppercase }}</h2>
               <p>{{  blog.createdDate }} <a href="#">{{ blog.author | lowercase}}</a></p>
               <p>{{ blog.content }}
               </p>
@@ -74,16 +119,16 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
+  </div>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/angular.min.js"></script>
-    <script src="assets/js/angular/app.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="assets/js/bootstrap.min.js"></script>
-  </body>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/angular.min.js"></script>
+  <script src="assets/js/angular/app.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="assets/js/bootstrap.min.js"></script>
+</body>
 </body>
 </html>
