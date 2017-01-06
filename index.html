@@ -1,81 +1,53 @@
   <!DOCTYPE html>
   <html lang="en" ng-app="myBlog">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>My Blog</title>
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+      <title>My Blog</title>
 
-    <!-- Bootstrap -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="assets/css/custom.css">
+      <!-- Bootstrap -->
+      <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="assets/css/custom.css">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-      <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-      </head>
-      <body>
+      <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+      <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+          <![endif]-->
+    </head>
+    <body>
       <div ng-controller="navController as nv">
         <!-- Navigatiob var -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" >
-          <div class="container">
-           <ul class="nav navbar-nav" ng-repeat="menu in nv.itemsAvailable">
-              <li ng-class="{ active: menu.active }">
-                <a href="{{ menu.link }}">{{ menu.text }}</a>
-              </li>
-            </ul>
-          </div>
-        </nav> 
+        <div ng-include="'./assets/partials/topNavBar.html'"></div>
         <!-- Tab content -->
-      <div class= "container">
-        <div class="row">
-          <h1 class= "user"> My Blog</h1>
-          <p>My Personal Blog </p>
-        </div>
-        <div class="row">
-          <!-- Left Layout -->
-          <div class="col-md-8" ng-controller="homeController as hc" >
-            <button ng-click="hc.createNewForm()" class="btn btn-success">Add New</button>
-            <div class="row" ng-include="'./assets/partials/blogSubmissionForm.html'">
-
-            </div>
-            <!-- My first blog -->
-            <div ng-repeat="blog in hc.blogContent | orderBy: '-blog.createdDate' " >
-              <div ng-show="blog.published">
-                <h2>{{ blog.title | uppercase }}</h2>
-                <p>Created on {{  blog.createdDate | date:'dd/MM/yyyy @ h:mma' }} by <a href="#">{{ blog.author | lowercase}}</a></p>
-                <p>{{ blog.content }}
-                </p>
-                <hr>
-              </div>
-            </div><!-- blog-post -->       
-          </div><!-- main content -->  
-          <!-- Right Side bar -->
-          <div class="col-md-4">
-            <div>
-              <h4>About</h4>
-              <img src="./assets/img/Penguins.jpg" alt="it's me" class="img-circle myimage">
-              <p>This is my personal blog, it is created as part of our workshop</p>
-              <div>
-                <h4>Archives</h4>
-                <ol class="list-unstyled">
-                  <li><a href="#">July 2017</a></li>    
-                  <li><a href="#">June 2016</a></li>
-                  <li><a href="#">May 2016</a></li>
-                  <li><a href="#">April 2016</a></li>
-                </ol>
-              </div>
-            </div>
+        <div class= "container">
+          <div class="row">
+            <h1 class= "user"> My Blog</h1>
+            <p>My Personal Blog </p>
           </div>
-        </div>
-      </div>
-      </div>
-    </div>
-
+          <div class="row">
+            <!-- Left Layout / Main content-->
+            <div class="col-md-8" ng-controller="homeController as hc" >
+              <!-- Button to display the compose form -->
+              <button ng-click="hc.createNewForm()" class="btn btn-success">Add New</button>
+              <!-- Blog form -->
+              <div class="row" ng-include="'./assets/partials/blogSubmissionForm.html'"></div>
+              <!-- blog content -->
+              <div ng-repeat="blog in hc.blogContent | orderBy: '-blog.createdDate' " >
+                <div ng-include="'./assets/partials/blogContent.html'"></div>
+              </div><!-- blog-content -->   
+            </div><!-- main content -->  
+            <!-- Right Side bar -->
+            <div class="col-md-4">
+              <div ng-include="'./assets/partials/rightSideBar.html'">
+              </div>
+            </div><!-- right side bar --> 
+          </div><!-- row --> 
+        </div><!-- container --> 
+      </div><!-- top div -->  
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/angular.min.js"></script>
